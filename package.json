@@ -4,11 +4,14 @@
   "description": "Zones using async_hooks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -r esm -r '.' test/test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "esm": "^3.0.22"
   }
 }
