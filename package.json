@@ -2,7 +2,7 @@
   "name": "@ohanapediatrics/minizone",
   "version": "2.0.0",
   "description": "Zones using async_hooks",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc -d",
