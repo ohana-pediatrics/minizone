@@ -1,0 +1,37 @@
+{
+  "linterOptions": {
+    "exclude": [
+      "**/*.json"
+    ]
+  },
+  "rules": {
+    "no-unused-variable": false,
+    "adjacent-overload-signatures": true,
+    "prefer-for-of": true,
+    "unified-signatures": true,
+    "no-any": true,
+    "label-position": true,
+    "no-arg": true,
+    "no-construct": true,
+    "no-invalid-this": true,
+    "no-misused-new": true,
+    "no-shadowed-variable": true,
+    "no-string-throw": true,
+    "no-var-keyword": true,
+    "triple-equals": [
+      true,
+      "allow-null-check",
+      "allow-undefined-check"
+    ]
+  },
+  "jsRules": {
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    "quotemark": false,
+    "trailing-comma": false,
+    "no-empty": [
+      true,
+      "allow-empty-functions"
+    ]
+  }
+}

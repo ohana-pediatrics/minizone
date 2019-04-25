@@ -1,10 +1,12 @@
 {
-  "name": "minizone",
+  "name": "@ohanapediatrics/minizone",
   "version": "1.0.0",
   "description": "Zones using async_hooks",
   "main": "index.js",
   "scripts": {
-    "test": "node -r esm -r '.' test/test.js"
+    "prepare": "npm run build",
+    "build": "tsc -d",
+    "test": "ts-node test/test.ts"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,9 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "esm": "^3.0.22"
+    "@types/node": "^11.13.7",
+    "esm": "^3.0.22",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
   }
 }
