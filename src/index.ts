@@ -1,10 +1,13 @@
 import * as ah from 'async_hooks';
 
-const zones = new Map();
-
 export const Zone = {
+  zones: new Map(),
   get current() {
-    return zones.get(ah.executionAsyncId())
+    if (!this.zones.get(ah.executionAsyncId())) {
+      this.zones.set(ah.executionAsyncId(), new TheZone({}))
+    }
+
+    return this.zones.get(ah.executionAsyncId());
   }
 };
 
@@ -17,7 +20,7 @@ class TheZone {
 
   fork(spec) {
     const z = new TheZone({...spec.properties, ...this.data});
-    zones.set(ah.executionAsyncId(), z);
+    Zone.zones.set(ah.executionAsyncId(), z);
 
     return z
   }
@@ -32,8 +35,8 @@ class TheZone {
 }
 
 ah.createHook({
-  init: (id, __, parentId) => zones.set(id, zones.get(parentId)),
-  destroy: (id) => zones.delete(id)
+  init: (id, __, parentId) => Zone.zones.set(id, Zone.zones.get(parentId)),
+  destroy: (id) => Zone.zones.delete(id)
 }).enable();
 
-zones.set(ah.executionAsyncId(), new TheZone({}));
+Zone.zones.set(ah.executionAsyncId(), new TheZone({}));
