@@ -2,11 +2,11 @@ import * as ah from 'async_hooks';
 
 class ZoneClass {
   private readonly data = {};
-  protected static zones = new Map();
+  protected static zones = new Map<number, {}>();
 
   static init() {
     ah.createHook({
-      init: (id, __, parentId) => ZoneClass.zones.set(id, ZoneClass.zones.get(parentId)),
+      init: (id, __, parentId) => ZoneClass.zones.set(id, {...(ZoneClass.zones.get(parentId) || {})}),
       destroy: (id) => ZoneClass.zones.delete(id)
     }).enable();
 
